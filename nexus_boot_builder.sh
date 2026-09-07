@@ -1,7 +1,7 @@
 #!/bin/sh
 # nexus_boot_builder.sh — NeXuS Boot Builder state manager
 #
-# Designer: hackenstacks <nxsnet@proton.me>
+# Designer: hackenstacks <hackenstacks@protonmail.com>
 # Project:  NeXuS Hadean-Eon Phase — Sovereign Service Orchestration
 #
 # Called by nexus_boot_builder.toml (watchbind) for all UI operations.
