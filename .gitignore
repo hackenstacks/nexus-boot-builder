@@ -1,0 +1,11 @@
+*.bak
+*.fossil
+*.key
+*.pem
+.env
+.local.env
+secrets/
+__pycache__/
+*.pyc
+*.pyo
+.venv/

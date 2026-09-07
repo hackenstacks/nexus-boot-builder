@@ -1,0 +1,49 @@
+# nexus_boot_builder.toml — NeXuS Boot Builder watchbind config
+# Designer: hackenstacks <nxsnet@proton.me>
+# Project:  NeXuS Hadean-Eon Phase — Sovereign Service Orchestration
+#
+# Profiles:
+#   default     balanced daily ops
+#   locked-down no network exposure — local AI only
+#   stealth     ghost-mode auto-armed on apply — invisible node
+#   torrent     file sharing + darknet (copyparty + DivaChain/I2P)
+#   server      full stack — max capability
+#   studio      kill heavy services — free RAM/CPU for production
+#   kiosk       browser-facing only — no management surface
+#   ghost       RAM-only boot — no disk activity
+#
+# Keys:
+#   SPACE   toggle service on/off
+#   g       toggle ghost flag (included in ghost/stealth boot lineup)
+#   m       cycle mode: tmux → daemon → ghost
+#   TAB     cycle active profile
+#   n       new profile (clone current → prompts for name in shell)
+#   x       delete active profile
+#   a       apply active profile now
+#   r       restart nexus-bg session
+#   ?       toggle this help
+#   q/ESC   quit
+
+header-lines = 4
+interval     = 3.0
+
+cursor-fg        = "cyan"
+cursor-bg        = "dark-gray"
+cursor-boldness  = "bold"
+header-fg        = "cyan"
+header-boldness  = "bold"
+non-cursor-non-header-fg = "white"
+
+[keybindings]
+" "   = [ "exec -- sh -c '\"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" toggle $(echo $line | awk \"{print \\$1}\")'", "reload" ]
+"g"   = [ "exec -- sh -c '\"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" ghost  $(echo $line | awk \"{print \\$1}\")'", "reload" ]
+"m"   = [ "exec -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" mode",    "reload" ]
+"tab" = [ "exec -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" profile", "reload" ]
+"n"   = [ "exec -- sh -c '\"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" new nexus-$(date +%H%M)'", "reload" ]
+"x"   = [ "exec -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" del",     "reload" ]
+"a"   = [ "exec & -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" apply" ]
+"r"   = [ "exec & -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" restart" ]
+"c"   = [ "exec & -- \"$HOME/git/nexus-boot-builder/nexus_boot_builder.sh\" cleanup" ]
+"?"   = [ "help-toggle" ]
+"q"   = [ "exit" ]
+"esc" = [ "exit" ]
